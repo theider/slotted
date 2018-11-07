@@ -31,12 +31,12 @@
         <snapshotRepository>
             <id>sendsmart-snapshots</id>
             <name>sendsmart-artifacts-snapshots</name>
-            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-snapshot</url>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
         <repository>
             <id>sendsmart-releases</id>
             <name>sendsmart-artifacts-releases</name>
-            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-release</url>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-release-local</url>
         </repository>
     </distributionManagement>
     <build>
