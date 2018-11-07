@@ -1,10 +1,10 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sendsmart.slotted</groupId>
     <artifactId>slotted</artifactId>
     <packaging>jar</packaging>
     <name>Slotted</name>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.2</version>
     <description>An extension of GWT Activities and Places, which adds the ability to nest Activities.</description>
     <url>http://code.google.com/p/slotted/</url>
     <licenses>
@@ -18,7 +18,7 @@
         <connection>scm:git:git@github.com:theider/slotted.git</connection>
         <url>scm:git:git@github.com:theider/slotted.git</url>
         <developerConnection>scm:git:git@github.com:theider/slotted.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>slotted-0.2</tag>
     </scm>
     <developers>
         <developer>
