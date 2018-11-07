@@ -21,6 +21,8 @@ package com.google.web.bindery.event.shared;
 public class EventHelper {
     /**
      * Calls the protected setSource() method on the passed Event.
+     * @param event
+     * @param source
      */
     public static void setSource(Event event, Object source) {
         event.setSource(source);
@@ -28,6 +30,9 @@ public class EventHelper {
 
     /**
      * Calls the protected dispatch() method on the passed Event.
+     * @param <H>
+     * @param event
+     * @param handler
      */
     public static <H> void dispatch(Event<H> event, H handler) {
         event.dispatch(handler);
