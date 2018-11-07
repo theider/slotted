@@ -15,7 +15,10 @@
         </license>
     </licenses>
     <scm>
-        <url>scm:git:https://code.google.com/p/slotted/</url>
+        <connection>scm:git:git@github.com:theider/slotted.git</connection>
+        <url>scm:git:git@github.com:theider/slotted.git</url>
+        <developerConnection>scm:git:git@github.com:theider/slotted.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
     <developers>
         <developer>
