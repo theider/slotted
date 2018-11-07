@@ -17,7 +17,6 @@ package com.googlecode.slotted.client;
 
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.EventBus;
@@ -79,13 +78,9 @@ public class ActiveSlot {
     private HistoryMapper historyMapper;
     private ResettableEventBus resettableEventBus;
 
-    private static native void firebugLog(String message) /*-{
-        console.log(message);
-    }-*/;
-
     public ActiveSlot(ActiveSlot parent, Slot slot, EventBus eventBus,
             SlottedController slottedController) {
-        firebugLog("ActiveSlot constructor " + slot.toString());
+        Debug.debugMessage("ActiveSlot constructor " + slot.toString());
         this.parent = parent;
         this.slot = slot;
         this.slottedController = slottedController;
@@ -175,6 +170,7 @@ public class ActiveSlot {
                 }
                 children.clear();
             }
+            Debug.debugMessage("currentProtectedDisplay set to null");
             currentProtectedDisplay = null;
         } finally {
             resettableEventBus.removeHandlers();
@@ -276,8 +272,9 @@ public class ActiveSlot {
                 = new com.google.gwt.event.shared.ResettableEventBus(resettableEventBus);
         activityStarting = true;
         currentProtectedDisplay = new ProtectedDisplay(activity);
+        Debug.debugMessage("currentProtectedDisplay set to " + currentProtectedDisplay + " by " + activity);
         try {
-            Debug.log("activity start " + parameters + " currentProtectedDisplay " + currentProtectedDisplay);
+            Debug.debugMessage("activity start " + parameters + " currentProtectedDisplay " + currentProtectedDisplay);
             activity.start(currentProtectedDisplay, legacyBus);
         } catch (Exception e) {
             String token = historyMapper.createToken(place);
@@ -339,6 +336,7 @@ public class ActiveSlot {
      * Activity doesn't match the current Activity, the call is ignored.
      */
     public void setLoading(boolean loading, SlottedActivity activity) {
+        Debug.debugMessage("setLoading currentProtectedDisplay=" + currentProtectedDisplay);
         if (currentProtectedDisplay != null && currentProtectedDisplay.activity == activity) {
             currentProtectedDisplay.loading = loading;
             if (loading) {
@@ -357,6 +355,7 @@ public class ActiveSlot {
      * @return The current Place for the Slot that is loading.
      */
     public SlottedPlace getFirstLoadingPlace() {
+        Debug.debugMessage("getFirstLoadingPlace currentProtectedDisplay=" + currentProtectedDisplay);
         if (currentProtectedDisplay == null || currentProtectedDisplay.loading) {
             return place;
         }
@@ -379,6 +378,7 @@ public class ActiveSlot {
      * state.
      */
     public void showViews() {
+        Debug.debugMessage("showViews currentProtectedDisplay=" + currentProtectedDisplay);
         if (currentProtectedDisplay == null || currentProtectedDisplay.loading) {
             throw new IllegalStateException("Attempting to show a view for a loading slot:" + place);
         }
