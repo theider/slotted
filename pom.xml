@@ -27,4 +27,27 @@
             <email>jeffg.npc@gmail.com</email>
         </developer>
     </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sendsmart-snapshots</id>
+            <name>sendsmart-artifacts-snapshots</name>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>sendsmart-releases</id>
+            <name>sendsmart-artifacts-releases</name>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-release</url>
+        </repository>
+    </distributionManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.gwt.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>
