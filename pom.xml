@@ -4,7 +4,7 @@
     <artifactId>slotted</artifactId>
     <packaging>jar</packaging>
     <name>Slotted</name>
-    <version>0.4</version>
+    <version>1.0-SNAPSHOT</version>
     <description>An extension of GWT Activities and Places, which adds the ability to nest Activities.</description>
     <url>http://code.google.com/p/slotted/</url>
     <licenses>
