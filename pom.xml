@@ -1,27 +1,59 @@
 <project>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.googlecode.slotted</groupId>
-  <artifactId>slotted</artifactId>
-  <packaging>jar</packaging>
-  <name>Slotted</name>
-  <version>0.4-SNAPSHOT</version>
-  <description>An extension of GWT Activities and Places, which adds the ability to nest Activities.</description>
-  <url>http://code.google.com/p/slotted/</url>
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <scm>
-    <url>scm:git:https://code.google.com/p/slotted/</url>
-  </scm>
-  <developers>
-    <developer>
-      <id>jeffgnpc</id>
-      <name>Jeffrey Kleiss</name>
-      <email>jeffg.npc@gmail.com</email>
-    </developer>
-  </developers>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.googlecode.slotted</groupId>
+    <artifactId>slotted</artifactId>
+    <packaging>jar</packaging>
+    <name>Slotted</name>
+    <version>0.4-SNAPSHOT</version>
+    <description>An extension of GWT Activities and Places, which adds the ability to nest Activities.</description>
+    <url>http://code.google.com/p/slotted/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>scm:git:https://code.google.com/p/slotted/</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>jeffgnpc</id>
+            <name>Jeffrey Kleiss</name>
+            <email>jeffg.npc@gmail.com</email>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sendsmart-snapshots</id>
+            <name>sendsmart-artifacts-snapshots</name>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>sendsmart-releases</id>
+            <name>sendsmart-artifacts-releases</name>
+            <url>http://artifacts.sendsmart.com:8081/artifactory/libs-release</url>
+        </repository>
+    </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>2.8.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>2.8.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>2.8.2</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>
