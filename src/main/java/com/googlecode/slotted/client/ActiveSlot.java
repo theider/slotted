@@ -25,12 +25,16 @@ import com.googlecode.slotted.client.SlottedController.RootSlotImpl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * An internal object that holds all the data needed to correctly display a
  * Slot. This shouldn't be used outside of the framework.
  */
 public class ActiveSlot {
+
+    private static final Logger log = Logger.getLogger(ActiveSlot.class.getName());
 
     /**
      * Wraps our real display to prevent an old Activity from displaying it's
@@ -202,6 +206,7 @@ public class ActiveSlot {
         }
         place = newPlace;
         newPlace = null;
+        Debug.debugMessage(slot.getClass().getName() + " updated place to " + place);
 
         createChildren();
 
@@ -251,6 +256,7 @@ public class ActiveSlot {
      * @param parameters The global parameters for the hierarchy
      */
     private void getStartActivity(PlaceParameters parameters) {
+        log.log(Level.INFO, "{0}  getStartActivity", this.getClass().getName());
         activity = place.getActivity();
         if (activity == null) {
             ActivityMapper mapper = slottedController.getLegacyActivityMapper();
@@ -272,11 +278,12 @@ public class ActiveSlot {
                 = new com.google.gwt.event.shared.ResettableEventBus(resettableEventBus);
         activityStarting = true;
         currentProtectedDisplay = new ProtectedDisplay(activity);
-        Debug.debugMessage("currentProtectedDisplay set to " + currentProtectedDisplay + " by " + activity);
+        Debug.debugMessage(slot.getClass().getName() + " currentProtectedDisplay set to " + currentProtectedDisplay + " by " + activity);
         try {
             Debug.debugMessage("activity start " + parameters + " currentProtectedDisplay " + currentProtectedDisplay);
             activity.start(currentProtectedDisplay, legacyBus);
         } catch (Exception e) {
+            Debug.debugMessage(("unhandled exception in start activity " + e.getMessage()));
             String token = historyMapper.createToken(place);
             throw new SlottedInitException(token, e);
         }
