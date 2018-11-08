@@ -34,8 +34,6 @@ import java.util.logging.Logger;
  */
 public class ActiveSlot {
 
-    private static final Logger log = Logger.getLogger(ActiveSlot.class.getName());
-
     /**
      * Wraps our real display to prevent an old Activity from displaying it's
      * contents, after it is no longer active.
@@ -256,7 +254,6 @@ public class ActiveSlot {
      * @param parameters The global parameters for the hierarchy
      */
     private void getStartActivity(PlaceParameters parameters) {
-        log.log(Level.INFO, "{0}  getStartActivity", this.getClass().getName());
         activity = place.getActivity();
         if (activity == null) {
             ActivityMapper mapper = slottedController.getLegacyActivityMapper();
