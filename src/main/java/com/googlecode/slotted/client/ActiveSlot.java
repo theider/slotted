@@ -218,6 +218,8 @@ public class ActiveSlot {
         }
     }
 
+    private static final Logger log = Logger.getLogger(SlottedController.class.getName());
+
     /**
      * Gets the appropriate Place for this Slot.
      *
@@ -272,9 +274,11 @@ public class ActiveSlot {
                 = new com.google.gwt.event.shared.ResettableEventBus(resettableEventBus);
         activityStarting = true;
         currentProtectedDisplay = new ProtectedDisplay(activity);        
-        try {            
+        try {
+            log.log(Level.SEVERE, "activity start " + this.getSlot().getClass().getName());
             activity.start(currentProtectedDisplay, legacyBus);
-        } catch (Exception e) {            
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "unhandled exception while starting activity", e);
             String token = historyMapper.createToken(place);
             throw new SlottedInitException(token, e);
         }
