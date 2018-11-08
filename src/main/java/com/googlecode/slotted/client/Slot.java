@@ -61,8 +61,7 @@ public class Slot {
      * @deprecated
      * This is now handled by {@link SlottedActivity#getChildSlotDisplay(Slot)}
      */
-    public void setDisplay(AcceptsOneWidget display) {
-        Debug.debugMessage("Slot " + this.getClass().getName() + " display set to " + display);
+    public void setDisplay(AcceptsOneWidget display) {        
         if (display == null) {
             throw new NullPointerException("Display can't be null.");
         }

@@ -81,8 +81,7 @@ public class ActiveSlot {
     private ResettableEventBus resettableEventBus;
 
     public ActiveSlot(ActiveSlot parent, Slot slot, EventBus eventBus,
-            SlottedController slottedController) {
-        Debug.debugMessage("ActiveSlot constructor " + slot.toString());
+            SlottedController slottedController) {        
         this.parent = parent;
         this.slot = slot;
         this.slottedController = slottedController;
@@ -171,8 +170,7 @@ public class ActiveSlot {
                     child.stopActivities();
                 }
                 children.clear();
-            }
-            Debug.debugMessage("currentProtectedDisplay set to null");
+            }            
             currentProtectedDisplay = null;
         } finally {
             resettableEventBus.removeHandlers();
@@ -203,8 +201,7 @@ public class ActiveSlot {
             stopActivities();
         }
         place = newPlace;
-        newPlace = null;
-        Debug.debugMessage(slot.getClass().getName() + " updated place to " + place);
+        newPlace = null;        
 
         createChildren();
 
@@ -274,13 +271,10 @@ public class ActiveSlot {
         com.google.gwt.event.shared.ResettableEventBus legacyBus
                 = new com.google.gwt.event.shared.ResettableEventBus(resettableEventBus);
         activityStarting = true;
-        currentProtectedDisplay = new ProtectedDisplay(activity);
-        Debug.debugMessage(slot.getClass().getName() + " currentProtectedDisplay set to " + currentProtectedDisplay + " by " + activity);
-        try {
-            Debug.debugMessage("activity start " + parameters + " currentProtectedDisplay " + currentProtectedDisplay);
+        currentProtectedDisplay = new ProtectedDisplay(activity);        
+        try {            
             activity.start(currentProtectedDisplay, legacyBus);
-        } catch (Exception e) {
-            Debug.debugMessage(("unhandled exception in start activity " + e.getMessage()));
+        } catch (Exception e) {            
             String token = historyMapper.createToken(place);
             throw new SlottedInitException(token, e);
         }
@@ -339,8 +333,7 @@ public class ActiveSlot {
      * @param activity The Activity attempting to set the loading state. If the
      * Activity doesn't match the current Activity, the call is ignored.
      */
-    public void setLoading(boolean loading, SlottedActivity activity) {
-        Debug.debugMessage("setLoading currentProtectedDisplay=" + currentProtectedDisplay);
+    public void setLoading(boolean loading, SlottedActivity activity) {        
         if (currentProtectedDisplay != null && currentProtectedDisplay.activity == activity) {
             currentProtectedDisplay.loading = loading;
             if (loading) {
@@ -358,8 +351,7 @@ public class ActiveSlot {
      *
      * @return The current Place for the Slot that is loading.
      */
-    public SlottedPlace getFirstLoadingPlace() {
-        Debug.debugMessage("getFirstLoadingPlace currentProtectedDisplay=" + currentProtectedDisplay);
+    public SlottedPlace getFirstLoadingPlace() {        
         if (currentProtectedDisplay == null || currentProtectedDisplay.loading) {
             return place;
         }
@@ -381,8 +373,7 @@ public class ActiveSlot {
      * @throw IllegalStateException If any of the ActiveSlots are in a loading
      * state.
      */
-    public void showViews() {
-        Debug.debugMessage("showViews currentProtectedDisplay=" + currentProtectedDisplay);
+    public void showViews() {        
         if (currentProtectedDisplay == null || currentProtectedDisplay.loading) {
             throw new IllegalStateException("Attempting to show a view for a loading slot:" + place);
         }
