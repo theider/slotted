@@ -274,8 +274,7 @@ public class ActiveSlot {
                 = new com.google.gwt.event.shared.ResettableEventBus(resettableEventBus);
         activityStarting = true;
         currentProtectedDisplay = new ProtectedDisplay(activity);        
-        try {
-            log.log(Level.SEVERE, "activity start " + this.getSlot().getClass().getName());
+        try {            
             activity.start(currentProtectedDisplay, legacyBus);
         } catch (Exception e) {
             log.log(Level.SEVERE, "unhandled exception while starting activity", e);
