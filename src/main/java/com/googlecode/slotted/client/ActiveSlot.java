@@ -68,17 +68,17 @@ public class ActiveSlot {
         }
     }
 
-    private ActiveSlot parent;
-    private ArrayList<ActiveSlot> children = new ArrayList<ActiveSlot>();
-    private Slot slot;
+    private final ActiveSlot parent;
+    private final ArrayList<ActiveSlot> children = new ArrayList<ActiveSlot>();
+    private final Slot slot;
     private SlottedPlace place;
     private SlottedPlace newPlace;
     private Activity activity;
     private boolean activityStarting;
     private ProtectedDisplay currentProtectedDisplay;
-    private SlottedController slottedController;
-    private HistoryMapper historyMapper;
-    private ResettableEventBus resettableEventBus;
+    private final SlottedController slottedController;
+    private final HistoryMapper historyMapper;
+    private final ResettableEventBus resettableEventBus;
 
     public ActiveSlot(ActiveSlot parent, Slot slot, EventBus eventBus,
             SlottedController slottedController) {        
@@ -277,7 +277,7 @@ public class ActiveSlot {
         try {            
             activity.start(currentProtectedDisplay, legacyBus);
         } catch (Exception e) {
-            log.log(Level.SEVERE, "unhandled exception while starting activity", e);
+            log.log(Level.SEVERE, "unhandled exception while starting activity " + slot.getClass().getName()  + " " + activity.getClass().getName(), e);
             String token = historyMapper.createToken(place);
             throw new SlottedInitException(token, e);
         }
